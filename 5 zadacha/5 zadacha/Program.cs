@@ -10,7 +10,11 @@ namespace _5_zadacha
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Mark 68");
-        }
+            Console.WriteLine("Введите 3 цифры");
+           int a =int.Parse(Console.ReadLine());
+           int b =int.Parse(Console.ReadLine());
+           int c =int.Parse(Console.ReadLine());          
+                                              
+       }
     }
 }

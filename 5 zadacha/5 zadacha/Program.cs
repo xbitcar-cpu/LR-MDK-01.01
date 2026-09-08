@@ -10,6 +10,7 @@ namespace _5_zadacha
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Mark 68");
         }
     }
 }

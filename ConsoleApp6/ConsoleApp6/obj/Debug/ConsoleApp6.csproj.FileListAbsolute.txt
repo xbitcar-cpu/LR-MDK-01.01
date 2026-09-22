@@ -1,0 +1,7 @@
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.exe.config
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.exe
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.pdb
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.AssemblyReference.cache
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.CoreCompileInputs.cache
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.exe
+D:\П-30\Цифорки\LR-MDK-01.01\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.pdb

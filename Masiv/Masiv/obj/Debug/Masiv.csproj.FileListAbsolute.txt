@@ -1,0 +1,7 @@
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\bin\Debug\Masiv.exe.config
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\bin\Debug\Masiv.exe
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\bin\Debug\Masiv.pdb
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\obj\Debug\Masiv.csproj.AssemblyReference.cache
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\obj\Debug\Masiv.csproj.CoreCompileInputs.cache
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\obj\Debug\Masiv.exe
+D:\mdk0101\GitHub\GitHub\Masiv\Masiv\obj\Debug\Masiv.pdb

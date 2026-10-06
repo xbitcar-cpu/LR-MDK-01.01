@@ -22,6 +22,14 @@ namespace ЛР2
                     return false;
                 }
             }
+            total = 0;
+            for (int i = 0; i < names.Count; i++)
+            {
+                stock[i] -= ordered[i];
+                total += ordered[i] * prices[i];
+            }
+            MissingName = null;
+            return true;
         }
     }
 }

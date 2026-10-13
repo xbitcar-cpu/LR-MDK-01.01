@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop
 {
-    internal class Class2
+    internal class Seal_History
     {
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LR_2
 {
-    class InputReader
+    struct InputReader
     {
-        public static int ReadInt(string prompt)
+        public int ReadInt(string prompt)
         {
             while (true)
             {
@@ -22,7 +22,7 @@ namespace LR_2
                 Console.WriteLine("Ошибка: введите целое число.");
             }
         }
-        public static void ReadOrder(int count, int[] ordered)
+        public void ReadOrder(int count, int[] ordered)
         {
             while (true)
             {

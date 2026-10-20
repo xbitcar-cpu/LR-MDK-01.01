@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LR_2
 {
-    class OrderProcessor
+    struct OrderProcessor
     {
         public string MissingName;
         public bool TryPlaceOrder(List<string> names, List<int> prices,

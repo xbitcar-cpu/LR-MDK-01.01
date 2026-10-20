@@ -46,6 +46,7 @@
     <Compile Include="Catalog.cs" />
     <Compile Include="InputReader.cs" />
     <Compile Include="OrderProcessor.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

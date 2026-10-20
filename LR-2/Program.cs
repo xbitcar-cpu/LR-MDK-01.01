@@ -8,20 +8,25 @@ namespace LR_2
     {
         static void Main(string[] args)
         {
-            List<string> names = new List<string> { "хлеб", "молоко", "сыр", "колбаса", "масло" };
-            List<int> prices = new List<int> { 45, 80, 350, 420, 120 };
-            List<int> stock = new List<int> { 30, 25, 12, 8, 15 };
+            List<Product> products = new List<Product>
+            {
+                new Product("хлеб", 45, 30),
+                new Product("молоко", 80, 25),
+                new Product("сыр", 350, 12),
+                new Product("колбаса", 420, 8),
+                new Product("масло", 120, 15)
+            };
 
-            int[] ordered = new int[names.Count];
+            int[] ordered = new int[products.Count];
 
             Catalog catalog = new Catalog();
-            catalog.Print(names, prices, stock);
+            catalog.Print(products);
 
             InputReader inputReader = new InputReader();
-            inputReader.ReadOrder(names.Count, ordered);
+            inputReader.ReadOrder(products.Count, ordered);
 
             OrderProcessor orderProcessor = new OrderProcessor();
-            bool ok = orderProcessor.TryPlaceOrder(names, prices, stock, ordered, out int total);
+            bool ok = orderProcessor.TryPlaceOrder(products, ordered, out int total);
 
             if (ok)
             {
@@ -32,7 +37,7 @@ namespace LR_2
                 Console.WriteLine("Заказ отклонён: не хватило товара — " + orderProcessor.MissingName);
             }
 
-            catalog.PrintStock(names, stock);
+            catalog.PrintStock(products);
         }
     }
 }

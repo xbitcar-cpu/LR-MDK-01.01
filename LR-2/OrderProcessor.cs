@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LR_2
 {
     struct OrderProcessor
     {
         public string MissingName;
-        public bool TryPlaceOrder(List<string> names, List<int> prices,
-                                         List<int> stock, int[] ordered, out int total)
+
+        public bool TryPlaceOrder(List<Product> products, int[] ordered, out int total)
         {
-            for (int i = 0; i < names.Count; i++)
+            for (int i = 0; i < products.Count; i++)
             {
-                if (ordered[i] > stock[i])
+                if (ordered[i] > products[i].Stock)
                 {
-                    MissingName = names[i];
+                    MissingName = products[i].Name;
                     total = 0;
                     return false;
                 }
             }
+
             total = 0;
-            for (int i = 0; i < names.Count; i++)
+            for (int i = 0; i < products.Count; i++)
             {
-                stock[i] -= ordered[i];
-                total += ordered[i] * prices[i];
+                Product p = products[i];
+                p.Stock -= ordered[i];
+                products[i] = p;
+                total += ordered[i] * products[i].Price;
             }
+
             MissingName = null;
             return true;
         }

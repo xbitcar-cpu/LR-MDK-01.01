@@ -51,5 +51,44 @@ namespace LR3
 
             return result;
         }
+
+        public static ProfitByProductGroupReport MakeGroupReport(
+            ProfitByPeriodReport periodReport, Nomenclature nomenclature)
+        {
+            Dictionary<ProductGroup, GroupReportRow> totalRows =
+                new Dictionary<ProductGroup, GroupReportRow>();
+
+            foreach (ReportRow periodRow in periodReport.GetReportRows())
+            {
+                ProductGroup group =
+                    nomenclature.GetProductGroupByProduct(periodRow.Product_).Value;
+
+                if (totalRows.ContainsKey(group))
+                {
+                    GroupReportRow row = totalRows[group];
+                    row.Count_ += periodRow.Count_;
+                    row.Cost_ += periodRow.Cost_;
+                    totalRows[group] = row;
+                }
+                else
+                {
+                    totalRows.Add(group, new GroupReportRow
+                    {
+                        Group_ = group,
+                        Count_ = periodRow.Count_,
+                        Cost_ = periodRow.Cost_
+                    });
+                }
+            }
+
+            ProfitByProductGroupReport result = new ProfitByProductGroupReport();
+
+            foreach (KeyValuePair<ProductGroup, GroupReportRow> row in totalRows)
+            {
+                result.AddRow(row.Value);
+            }
+
+            return result;
+        }
     }
 }

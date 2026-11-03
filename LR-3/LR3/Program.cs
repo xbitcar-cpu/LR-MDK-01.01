@@ -36,6 +36,16 @@ namespace LR3
             {
                 System.Console.WriteLine(row.Product_ + ": " + row.Count_ + " шт., " + row.Cost_ + " руб.");
             }
+
+            ProfitByProductGroupReport groupReport =
+                Accountant.MakeGroupReport(periodReport, Group);
+
+            System.Console.WriteLine();
+            System.Console.WriteLine("Отчёт по товарным группам:");
+            foreach (GroupReportRow row in groupReport.GetReportRows())
+            {
+                System.Console.WriteLine(row.Group_ + ": " + row.Count_ + " шт., " + row.Cost_ + " руб.");
+            }
         }
     }
 }

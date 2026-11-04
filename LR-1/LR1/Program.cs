@@ -37,5 +37,26 @@ namespace LR1
                 }
             }
         }
+
+        static int ReadHour(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out int hour))
+                {
+                    if (hour >= 0 && hour <= 23)
+                        return hour;
+
+                    Console.WriteLine("Ошибка: время должно быть в диапазоне 0–23. Повторите ввод.");
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка: введите целое число. Повторите ввод.");
+                }
+            }
+        }
     }
 }

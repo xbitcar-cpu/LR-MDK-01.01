@@ -14,5 +14,28 @@ namespace LR1
         static void Main(string[] args)
         {
         }
+
+        static double ReadNonNegativeNumber(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (double.TryParse(input, NumberStyles.Float,
+                        CultureInfo.InvariantCulture, out double value)
+                    || double.TryParse(input, out value))
+                {
+                    if (value >= 0)
+                        return value;
+
+                    Console.WriteLine("Ошибка: число не должно быть меньше нуля. Повторите ввод.");
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка: введите число. Повторите ввод.");
+                }
+            }
+        }
     }
 }

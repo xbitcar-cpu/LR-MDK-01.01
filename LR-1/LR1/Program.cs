@@ -63,5 +63,20 @@ namespace LR1
         {
             return (hour >= 12 && hour <= 14) || (hour >= 18 && hour <= 20);
         }
+
+        static double CalculateDeliveryCost(double orderCost, double distance, int hour)
+        {
+            if (orderCost >= FreeDeliveryFrom)
+                return 0;
+
+            double cost = BaseCost;
+            if (distance > BaseDistance)
+                cost += (distance - BaseDistance) * CostPerKm;
+
+            if (IsPeakHour(hour))
+                cost *= PeakMultiplier;
+
+            return cost;
+        }
     }
 }

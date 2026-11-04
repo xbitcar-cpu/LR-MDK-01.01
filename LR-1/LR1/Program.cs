@@ -78,5 +78,10 @@ namespace LR1
 
             return cost;
         }
+
+        static double CalculateTotal(double orderCost, double deliveryCost)
+        {
+            return orderCost + deliveryCost;
+        }
     }
 }

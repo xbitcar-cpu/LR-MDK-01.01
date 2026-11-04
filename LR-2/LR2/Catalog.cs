@@ -14,5 +14,19 @@ namespace LR2
                     + products[i].Price_ + " руб., " + products[i].Stock_ + " шт.");
             }
         }
+
+        public void PrintStock(List<Product> products)
+        {
+            Console.Write("Остатки на складе: ");
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (i > 0)
+                {
+                    Console.Write(", ");
+                }
+                Console.Write(products[i].Name_ + " " + products[i].Stock_);
+            }
+            Console.WriteLine();
+        }
     }
 }

@@ -44,5 +44,19 @@ namespace LR2
                 Console.WriteLine("Ошибка: количество не может быть меньше нуля.");
             }
         }
+
+        public int[] ReadOrder(int count)
+        {
+            int[] ordered = new int[count];
+            while (true)
+            {
+                int number = ReadProductNumber(count);
+                if (number == 0)
+                {
+                    return ordered;
+                }
+                ordered[number - 1] += ReadQuantity();
+            }
+        }
     }
 }

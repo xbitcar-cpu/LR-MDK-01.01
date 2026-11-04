@@ -83,5 +83,12 @@ namespace LR1
         {
             return orderCost + deliveryCost;
         }
+
+        static string FormatMoney(double value)
+        {
+            return value == Math.Round(value)
+                ? value.ToString("0")
+                : value.ToString("0.00");
+        }
     }
 }

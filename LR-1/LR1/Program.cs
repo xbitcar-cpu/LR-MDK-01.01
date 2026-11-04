@@ -13,6 +13,9 @@ namespace LR1
 
         static void Main(string[] args)
         {
+            double orderCost = ReadNonNegativeNumber("Введите стоимость заказа (руб.): ");
+            double distance = ReadNonNegativeNumber("Введите расстояние доставки (км): ");
+            int hour = ReadHour("Введите время заказа (час): ");
         }
 
         static double ReadNonNegativeNumber(string prompt)

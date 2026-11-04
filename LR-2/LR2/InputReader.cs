@@ -31,5 +31,18 @@ namespace LR2
                 Console.WriteLine("Ошибка: номер товара должен быть от 1 до " + count + ".");
             }
         }
+
+        public int ReadQuantity()
+        {
+            while (true)
+            {
+                int quantity = ReadInt("Введите количество: ");
+                if (quantity >= 0)
+                {
+                    return quantity;
+                }
+                Console.WriteLine("Ошибка: количество не может быть меньше нуля.");
+            }
+        }
     }
 }

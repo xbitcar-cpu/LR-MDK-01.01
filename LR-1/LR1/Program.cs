@@ -90,5 +90,11 @@ namespace LR1
                 ? value.ToString("0")
                 : value.ToString("0.00");
         }
+
+        static void PrintResult(double deliveryCost, double total)
+        {
+            Console.WriteLine("Стоимость доставки: " + FormatMoney(deliveryCost) + " руб.");
+            Console.WriteLine("Итого к оплате: " + FormatMoney(total) + " руб.");
+        }
     }
 }

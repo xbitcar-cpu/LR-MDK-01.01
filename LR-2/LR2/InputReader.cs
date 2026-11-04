@@ -18,5 +18,18 @@ namespace LR2
                 Console.WriteLine("Ошибка: введите целое число.");
             }
         }
+
+        public int ReadProductNumber(int count)
+        {
+            while (true)
+            {
+                int number = ReadInt("Введите номер товара (0 — конец заказа): ");
+                if (number >= 0 && number <= count)
+                {
+                    return number;
+                }
+                Console.WriteLine("Ошибка: номер товара должен быть от 1 до " + count + ".");
+            }
+        }
     }
 }

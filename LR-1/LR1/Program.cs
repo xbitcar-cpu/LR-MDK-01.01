@@ -16,6 +16,11 @@ namespace LR1
             double orderCost = ReadNonNegativeNumber("Введите стоимость заказа (руб.): ");
             double distance = ReadNonNegativeNumber("Введите расстояние доставки (км): ");
             int hour = ReadHour("Введите время заказа (час): ");
+
+            double deliveryCost = CalculateDeliveryCost(orderCost, distance, hour);
+            double total = CalculateTotal(orderCost, deliveryCost);
+
+            PrintResult(deliveryCost, total);
         }
 
         static double ReadNonNegativeNumber(string prompt)

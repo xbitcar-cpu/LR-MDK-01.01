@@ -21,6 +21,19 @@ namespace LR2
 
             InputReader inputReader = new InputReader();
             int[] ordered = inputReader.ReadOrder(products.Count);
+
+            OrderProcessor orderProcessor = new OrderProcessor();
+            int total;
+            if (orderProcessor.TryPlaceOrder(products, ordered, out total))
+            {
+                Console.WriteLine("Стоимость заказа: " + total + " руб.");
+            }
+            else
+            {
+                Console.WriteLine("Заказ отклонён: не хватило товара — " + orderProcessor.GetMissingName());
+            }
+
+            catalog.PrintStock(products);
         }
     }
 }

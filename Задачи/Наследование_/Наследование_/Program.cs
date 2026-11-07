@@ -50,6 +50,15 @@ namespace Наследование_
             IceCream_MoroZ_Product ice4 = new IceCream_MoroZ_Product();
             ice4.Set("Fruit ice", 100, 11);
             products.Add(ice4);
+
+            foreach (Product product in products)
+            {
+                double cost = product.GetPrice() * product.GetCount();
+                double discount = product.CalculateDiscount();
+                double total = cost * (1 - discount / 100);
+
+                Console.WriteLine("Название: " + product.GetName() + ", цена за единицу: " + product.GetPrice() + ", продано: " + product.GetCount() + ", стомость: " + cost + ", скидка: " + discount + "%" + ", сумма с учетом скидки: " + total);
+            }
         }
     }
 }

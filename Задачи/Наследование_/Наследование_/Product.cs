@@ -12,24 +12,11 @@ namespace Наследование_
         protected double price_;
         protected int count_;
 
-        public void SetName(string name)
-        {
-            name_ = name;
-        }
-        public void SetPrice(double price)
-        {
-            price_ = price;
-        }
-        public void SetCount(int count)
-        {
-            count_ = count;
-        }
-
         public void Set(string name, double price, int count)
         {
-            SetName(name);
-            SetPrice(price);
-            SetCount(count);
+            name_ = name;
+            price_ = price;
+            count_ = count;
         }
 
         public string GetName()

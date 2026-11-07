@@ -57,7 +57,8 @@ namespace Наследование_
                 double discount = product.CalculateDiscount();
                 double total = cost * (1 - discount / 100);
 
-                Console.WriteLine("Название: " + product.GetName() + ", цена за единицу: " + product.GetPrice() + ", продано: " + product.GetCount() + ", стомость: " + cost + ", скидка: " + discount + "%" + ", сумма с учетом скидки: " + total);
+                Console.WriteLine("Название: " + product.GetName() + ", цена за единицу: " + product.GetPrice()
+                    + ", продано: " + product.GetCount() + ", стомость: " + cost + ", скидка: " + discount + "%" + ", сумма с учетом скидки: " + total);
             }
         }
     }

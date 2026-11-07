@@ -8,7 +8,7 @@ namespace Наследование_
 {
     class IceCream_MoroZ_Product : Product
     {
-        public override double CalculateDiscount()
+        public override int CalculateDiscount()
         {
             if (count_ > 10)
             {

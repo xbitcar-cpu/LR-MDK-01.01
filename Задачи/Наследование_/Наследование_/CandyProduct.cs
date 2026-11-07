@@ -8,7 +8,7 @@ namespace Наследование_
 {
     class CandyProduct : Product 
     {
-        public override double CalculateDiscount()
+        public override int CalculateDiscount()
         {
             if (count_ > 300)
             {

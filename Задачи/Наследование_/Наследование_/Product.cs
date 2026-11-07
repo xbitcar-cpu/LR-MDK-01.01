@@ -31,7 +31,7 @@ namespace Наследование_
         {
             return count_;
         }
-        public virtual double CalculateDiscount()
+        public virtual int CalculateDiscount()
         {
             return 0;
         }

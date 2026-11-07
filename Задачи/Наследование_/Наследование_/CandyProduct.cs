@@ -14,7 +14,7 @@ namespace Наследование_
             {
                 return 50;
             }
-            if (count_ > 150)
+            if (count_ >= 150)
             {
                 return 30;
             }

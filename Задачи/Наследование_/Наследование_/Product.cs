@@ -12,6 +12,11 @@ namespace Наследование_
         protected double price_;
         protected int count_;
 
+        public virtual int CalculateDiscount()
+        {
+            return 0;
+        }
+
         public void Set(string name, double price, int count)
         {
             name_ = name;
@@ -30,10 +35,6 @@ namespace Наследование_
         public int GetCount()
         {
             return count_;
-        }
-        public virtual int CalculateDiscount()
-        {
-            return 0;
         }
     }
 }

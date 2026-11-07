@@ -18,7 +18,7 @@ namespace Наследование_
             {
                 return 15;
             }
-            return 0;
+            return base.CalculateDiscount();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Наследование_
             {
                 return 10;
             }
-            return 0;
+            return base.CalculateDiscount();
         }
     }
 }

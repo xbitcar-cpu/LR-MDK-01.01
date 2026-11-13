@@ -1,55 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Наследование_
 {
     class Program
     {
-        static void Main(string[] args)
+        static Product CreateProduct(string type)
+        {
+            if (type == "Candy")
+            {
+                return new CandyProduct();
+            }
+            if (type == "IceCream")
+            {
+                return new IceCream_MoroZ_Product();
+            }
+            return null;
+        }
+
+        static List<Product> LoadProducts(string path)
         {
             List<Product> products = new List<Product>();
-            CandyProduct candy1 = new CandyProduct();
-            candy1.Set("skittles", 200, 10);
-            products.Add(candy1);
+            string[] lines = File.ReadAllLines(path, Encoding.UTF8);
 
-            CandyProduct candy2 = new CandyProduct();
-            candy2.Set("Mars", 200, 20);
-            products.Add(candy2);
+            for (int i = 1; i < lines.Length; i++)
+            {
+                if (lines[i].Trim() == "")
+                {
+                    continue;
+                }
 
-            CandyProduct candy3 = new CandyProduct();
-            candy3.Set("kit kat", 200, 150);
-            products.Add(candy3);
+                string[] parts = lines[i].Split(';');
+                if (parts.Length != 4)
+                {
+                    Console.WriteLine("Строка " + (i + 1) + " пропущена: нужно 4 поля");
+                    continue;
+                }
 
-            CandyProduct candy4 = new CandyProduct();
-            candy4.Set("milky way", 200, 155);
-            products.Add(candy4);
+                Product product = CreateProduct(parts[0].Trim());
+                if (product == null)
+                {
+                    Console.WriteLine("Строка " + (i + 1) + " пропущена: неизвестный тип " + parts[0]);
+                    continue;
+                }
 
-            CandyProduct candy5 = new CandyProduct();
-            candy5.Set("milke", 200, 300);
-            products.Add(candy5);
+                double price;
+                int count;
+                bool priceOk = double.TryParse(parts[2].Trim().Replace(',', '.'),
+                    NumberStyles.Float, CultureInfo.InvariantCulture, out price);
+                bool countOk = int.TryParse(parts[3].Trim(), out count);
+                if (!priceOk || !countOk)
+                {
+                    Console.WriteLine("Строка " + (i + 1) + " пропущена: неверное число");
+                    continue;
+                }
 
-            CandyProduct candy6 = new CandyProduct();
-            candy6.Set("baby fox", 200, 350);
-            products.Add(candy6);
+                product.Set(parts[1].Trim(), price, count);
+                products.Add(product);
+            }
+            return products;
+        }
 
-            IceCream_MoroZ_Product ice1 = new IceCream_MoroZ_Product();
-            ice1.Set("Plombir", 100, 4);
-            products.Add(ice1);
-
-            IceCream_MoroZ_Product ice2 = new IceCream_MoroZ_Product();
-            ice2.Set("Creme brulee", 100, 5);
-            products.Add(ice2);
-
-            IceCream_MoroZ_Product ice3 = new IceCream_MoroZ_Product();
-            ice3.Set("Sorbet", 100, 10);
-            products.Add(ice3);
-
-            IceCream_MoroZ_Product ice4 = new IceCream_MoroZ_Product();
-            ice4.Set("Fruit ice", 100, 11);
-            products.Add(ice4);
+        static List<string> CreateReport(List<Product> products)
+        {
+            List<string> report = new List<string>();
+            report.Add("Название;Цена за единицу;Продано;Стоимость;Скидка %;Сумма с учетом скидки");
 
             foreach (Product product in products)
             {
@@ -57,9 +76,35 @@ namespace Наследование_
                 double discount = product.CalculateDiscount();
                 double total = cost * (1 - discount / 100);
 
-                Console.WriteLine("Название: " + product.GetName() + ", цена за единицу: " + product.GetPrice()
-                    + ", продано: " + product.GetCount() + ", стомость: " + cost + ", скидка: " + discount + "%" + ", сумма с учетом скидки: " + total);
+                report.Add(product.GetName() + ";" + product.GetPrice() + ";" + product.GetCount()
+                    + ";" + cost + ";" + discount + ";" + total);
             }
+            return report;
+        }
+
+        static void Main(string[] args)
+        {
+            string inputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "input.txt");
+            string outputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "output.txt");
+
+            if (!File.Exists(inputPath))
+            {
+                Console.WriteLine("Файл не найден: " + inputPath);
+                Console.ReadKey();
+                return;
+            }
+
+            List<Product> products = LoadProducts(inputPath);
+            List<string> report = CreateReport(products);
+
+            File.WriteAllLines(outputPath, report, Encoding.UTF8);
+
+            foreach (string line in report)
+            {
+                Console.WriteLine(line);
+            }
+
+            Process.Start("notepad.exe", outputPath);
         }
     }
 }

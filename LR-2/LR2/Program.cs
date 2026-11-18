@@ -17,7 +17,7 @@ namespace LR2
             products.Add(new Product("масло", 120, 15));
 
             Catalog catalog = new Catalog();
-            catalog.Print(products);
+            catalog.Print(products, "Прайс-лист:");
 
             InputReader inputReader = new InputReader();
             int[] ordered = inputReader.ReadOrder(products.Count);
@@ -33,7 +33,7 @@ namespace LR2
                 Console.WriteLine("Заказ отклонён: не хватило товара — " + orderProcessor.GetMissingName());
             }
 
-            catalog.PrintStock(products);
+            catalog.Print(products, "Остатки на складе:");
         }
     }
 }
